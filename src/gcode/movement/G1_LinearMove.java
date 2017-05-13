@@ -20,45 +20,12 @@ public class G1_LinearMove extends GCode
     @Override
     public boolean process() throws Exception
     {
-        Double x = null;
-        Double y = null;
-        Double z = null;
-        Double e = null;
-        Double f = null;
-        Integer s = null;
-
-        for(String part: arguments)
-        {
-            if(part.length() < 1) continue;
-            try
-            {
-                switch (part.toUpperCase().charAt(0))
-                {
-                    case 'X':
-                        x = Double.parseDouble(part.substring(1));
-                        break;
-                    case 'Y':
-                        y = Double.parseDouble(part.substring(1));
-                        break;
-                    case 'Z':
-                        z = Double.parseDouble(part.substring(1));
-                        break;
-                    case 'E':
-                        e = Double.parseDouble(part.substring(1));
-                        break;
-                    case 'F':
-                        f = Double.parseDouble(part.substring(1));
-                        break;
-                    case 'S':
-                        s = Integer.parseInt(part.substring(1));
-                        break;
-                }
-            } catch (Exception ex)
-            {
-                ex.printStackTrace();
-                return false;
-            }
-        }
+        Double  x = arguments.containsKey('X')?Double.parseDouble(arguments.get('X')):null;
+        Double  y = arguments.containsKey('Y')?Double.parseDouble(arguments.get('Y')):null;
+        Double  z = arguments.containsKey('Z')?Double.parseDouble(arguments.get('Z')):null;
+        Double  e = arguments.containsKey('E')?Double.parseDouble(arguments.get('E')):null;
+        Double  f = arguments.containsKey('F')?Double.parseDouble(arguments.get('F')):null;
+        Integer s = arguments.containsKey('S')?Integer.parseInt(  arguments.get('S')):null;
 
         if(s != null) Printer3D.MOVEMENT_SYSTEM.setEndstopMode(s);
         if(f != null) Printer3D.MOVEMENT_SYSTEM.setFeedRate(f);
@@ -70,10 +37,9 @@ public class G1_LinearMove extends GCode
     @Override
     public String toString()
     {
-        String argumentPart = arguments.length > 0?(", arguments=" + Arrays.toString(arguments)):"";
         return "G1_LinearMove{" +
                 "code='" + code + '\'' +
-                argumentPart+
+                ", arguments=" + arguments +
                 '}';
     }
 }

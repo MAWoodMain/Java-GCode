@@ -32,7 +32,7 @@ public class UnclassifiedGCode extends GCode
     {
         return "UnclassifiedGCode{" +
                 "code='" + code + '\'' +
-                ", arguments=" + Arrays.toString(arguments) +
+                ", arguments=" + arguments +
                 '}';
     }
 }

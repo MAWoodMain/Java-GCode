@@ -15,13 +15,13 @@ public class G0_RapidLinearMove extends G1_LinearMove
         super(gCode);
     }
 
+
     @Override
     public String toString()
     {
-        String argumentPart = arguments.length > 0?(", arguments=" + Arrays.toString(arguments)):"";
         return "G0_RapidLinearMove{" +
                 "code='" + code + '\'' +
-                argumentPart+
+                ", arguments=" + arguments +
                 '}';
     }
 }

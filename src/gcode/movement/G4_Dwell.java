@@ -18,26 +18,22 @@ public class G4_Dwell extends GCode
     @Override
     public boolean process() throws Exception
     {
-        if(arguments.length < 2) return false;
-        switch (arguments[1].toUpperCase().charAt(0))
+        if(arguments.containsKey('P'))
         {
-            case 'P':
-                Thread.sleep(Long.parseLong(arguments[1].substring(1)));
-                break;
-            case 'S':
-                Thread.sleep((long)Math.floor(1000*Double.parseDouble(arguments[1].substring(1))));
-                break;
-        }
+            Thread.sleep(Integer.parseInt(arguments.get('P')));
+        } else if(arguments.containsKey('S'))
+        {
+            Thread.sleep((long)Math.floor(1000*Double.parseDouble(arguments.get('S'))));
+        } else return false;
         return true;
     }
 
     @Override
     public String toString()
     {
-        String argumentPart = arguments.length > 0?(", arguments=" + Arrays.toString(arguments)):"";
         return "G4_Dwell{" +
                 "code='" + code + '\'' +
-                argumentPart+
+                ", arguments=" + arguments +
                 '}';
     }
 }

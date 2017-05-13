@@ -25,10 +25,9 @@ public class UnknownGCode extends GCode
     @Override
     public String toString()
     {
-        String argumentPart = arguments.length > 0?(", arguments=" + Arrays.toString(arguments)):"";
         return "UnknownGCode{" +
                 "code='" + code + '\'' +
-                argumentPart+
+                ", arguments=" + arguments +
                 '}';
     }
 }
