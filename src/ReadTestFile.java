@@ -1,4 +1,4 @@
-import com.sun.javaws.exceptions.InvalidArgumentException;
+import gcode.InvalidGCodeException;
 import gcode.reserved.UnclassifiedGCode;
 
 import java.io.File;
@@ -28,7 +28,7 @@ public class ReadTestFile
                         try
                         {
                             System.out.println(new UnclassifiedGCode(line).getPacketTyped());
-                        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException | InvalidArgumentException e)
+                        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | InstantiationException | InvalidGCodeException e)
                         {
                             e.printStackTrace();
                         }

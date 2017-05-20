@@ -1,6 +1,5 @@
 package gcode;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -18,10 +17,10 @@ public abstract class GCode
     protected final String code;
     protected final HashMap<Character, String> arguments;
 
-    protected GCode(String command, int lineNumber) throws InvalidArgumentException
+    protected GCode(String command, int lineNumber) throws InvalidGCodeException
     {
         String[] parts = command.split("\\s+");
-        if(parts.length < 1) throw new InvalidArgumentException(new String[]{"GCode has not arguments"});
+        if(parts.length < 1) throw new InvalidGCodeException("GCode has not arguments");
         this.code = parts[0].toUpperCase();
         parts = Arrays.copyOfRange(parts, 1, parts.length);
         arguments = new HashMap<>();
@@ -32,7 +31,7 @@ public abstract class GCode
         this.lineNumber = lineNumber;
     }
 
-    protected GCode(String command) throws InvalidArgumentException
+    protected GCode(String command) throws InvalidGCodeException
     {
         this(command,-1);
     }

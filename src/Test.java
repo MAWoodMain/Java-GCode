@@ -1,4 +1,3 @@
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import gcode.GCode;
 import gcode.reserved.UnclassifiedGCode;
 

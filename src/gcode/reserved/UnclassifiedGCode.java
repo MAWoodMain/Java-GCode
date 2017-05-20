@@ -1,7 +1,7 @@
 package gcode.reserved;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import gcode.GCode;
+import gcode.InvalidGCodeException;
 
 import java.util.Arrays;
 
@@ -11,12 +11,12 @@ import java.util.Arrays;
  */
 public class UnclassifiedGCode extends GCode
 {
-    protected UnclassifiedGCode(String command, int lineNumber) throws InvalidArgumentException
+    protected UnclassifiedGCode(String command, int lineNumber) throws InvalidGCodeException
     {
         super(command, lineNumber);
     }
 
-    public UnclassifiedGCode(String command) throws InvalidArgumentException
+    public UnclassifiedGCode(String command) throws InvalidGCodeException
     {
         super(command);
     }
